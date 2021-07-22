@@ -1,0 +1,42 @@
+<!doctype html>
+<html style="width:200px;">
+  <head>
+    <link rel="stylesheet" type="text/css" href="main.css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>疫距數得</title>
+    <meta charset="UTF-8">
+  </head>
+
+  <body id="body">
+    <div class="title">
+      <img src="https://i.imgur.com/fHm1vzK.png" alt="">
+    </div>
+    <p id="loading"><i class="fas fa-spinner fa-spin"></i></p>
+    <div id="not_classing">
+      <input type="text" id="name" placeholder="輸入你的全名">
+      <input type="text" id="studentID" placeholder="輸入你的學號">
+      <button id="start">開始上課</button>   
+    </div>
+    <div id="is_classing">
+      <div class="talk-bubble">
+        上課中...
+      </div>
+      <button id="end">結束課程</button>
+    </div>
+    <div id="rest_time">
+      <div class="talk-bubble">
+        下課中...
+      </div>
+      <button id="end_rest">結束課程</button>
+    </div>
+    <div id="not_start">
+      <div class="talk-bubble">
+        課程未進行...
+      </div>
+      <button id="exit">離開</button>
+    </div>
+    <button id="reload">若有問題，請關閉網頁再點此重載</button>
+    <script src="./js/script.js"></script>
+  </body>
+</html>

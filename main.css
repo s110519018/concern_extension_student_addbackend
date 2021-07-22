@@ -1,0 +1,113 @@
+body{
+  text-align: center;
+  background: url(https://i.imgur.com/stJc4rr.png) center;
+  background-size: 200px auto;
+}
+img{
+  display: inline-block;
+  width: 55%;
+  margin-right: 6px;
+  margin-top: 8px;
+}
+h2{
+  display: inline-block;
+}
+.title {
+  display: flex;        
+  align-items: center;
+  justify-content: center;
+}
+input{
+  border:1px solid transparent;
+  padding: 4px 2px;
+  border-radius: 40px;
+  color: #82A098;
+}
+#studentID{
+  margin-top: 12px;
+}
+input::placeholder {
+  color: #82A098;
+  padding-left: 5px;
+}
+input:focus{
+  outline: none;
+}
+button{
+  background-color: #82A098;
+  color: #FAF9F9;
+  border:0;
+  border-radius: 100px;
+  font-weight: bold;
+  padding: 4px 8px;
+  margin-top: 12px;
+  outline: 0;
+  cursor: pointer;
+}
+button:focus{
+  background-color: #FAF9F9;
+  color: #82A098;
+}
+#loading i{
+  margin-top: 12px;
+  font-size: 40px;
+  color: #82A098;
+}
+#is_classing,#not_classing,#not_start,#rest_time{
+  display: none;
+  margin-top: 8px;
+}
+.talk-bubble{
+  position: relative;
+  text-align: center;
+  border-radius: 50%;
+  background-color: #FAF9F9;
+  width: 100px;
+  height: 60px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin: 12px auto;
+  color: #82A098;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 60px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.talk-bubble::after{
+  position: absolute;
+  content: '';
+  width: 20px;
+  height: 10px;
+  background-color: #FAF9F9;
+  left: 30%;
+  bottom: 6px;
+  transform: rotate(60deg);
+}
+.talk-bubble::before{
+  position: absolute;
+  content: '';
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 20px 0 0 20px;
+  border-color: transparent transparent transparent #FAF9F9;
+  left: 20%;
+  bottom: -6px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  transform: rotate(-30deg);
+}
+
+#reload{
+  background-color: transparent;
+  color: rgb(155, 152, 152);
+  border:0;
+  border-radius: 0px;
+  font-weight: normal;
+  text-decoration: underline;
+  padding: 0px;
+  margin-top: 16px;
+  outline: 0;
+  cursor: pointer;
+  font-size:12px;
+  transform: scale(0.916);/*11/12=0.916, font-size:11px*/
+}

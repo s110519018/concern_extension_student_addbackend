@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>【疫距數得 exCODItension】學生端統計</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" crossorigin="anonymous"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="chart.css">
+</head>
+<body>
+    <header>
+        <img src="https://i.imgur.com/g8JWscP.png" alt="">
+        <h1 id="sayhello">你好，        同學！</h1>
+    </header>
+    <div class="container">
+        <div class="title">
+            <h1>專注度統計資訊</h1>
+            <div class="setting">
+                <div class="slidecontainer">
+                    計算時間區隔調整 （單位：分）
+                    <input type="range" min="1" max="10" value="1" step="1" list="tickmarks" id="rangeInput">
+                    <datalist id="tickmarks">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                    </datalist>
+                </div>
+                <a id="download">下載</a>
+            </div>
+        </div>  
+        <div class="img_container">
+            <ul>
+                <li>
+                    參與課程比例
+                    <div id="attendTimePercentage">  %</div>
+                </li>
+                <li>
+                    專注百分比
+                    <div id="concernPercentage">  %</div>
+                </li>
+                <li>
+                    平均專注數值
+                    <div id="aveConcern">  </div>
+                    <div id="levelConcern">  </div>
+                </li>
+                <li>
+                    最長專注時間
+                    <div id="bestLasted">  </div>
+                </li>
+            </ul>
+            <div class="chart" id="chart">
+                <i id="loading" class="fa fa-spinner fa-spin"></i>
+                <canvas id="LineChart_values_personal"></canvas>
+            </div>
+        </div>
+    </div>
+    <h1 id="error">error錯誤，請按f5重新載入</h1>
+    <script src="chart.js"></script>
+</body>
+</html>

@@ -1,0 +1,151 @@
+html,body{
+    margin: 0 0;
+    padding: 0;
+    background-color: #F2F2F2;
+}
+
+header{
+    display: flex;
+    justify-content: space-between; 
+    background-color: #82A098;
+    height: 38px;
+    padding: 6px 16px;
+}
+header img{
+    height: 100%;
+    align-self: flex-end;
+}
+#sayhello{
+    color: #FFFFFF;
+    align-self: center;
+    font-size: 16px;
+}
+.container{
+    padding: 5px 20px;
+}
+.title{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    padding-bottom: 5px;
+}
+.setting{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+#download{
+    display: none;
+    border:0;
+    outline: 0;
+    text-decoration:none;
+    color: #FAF9F9;
+    background-color: #82A098;
+    border-radius: 40px;
+    text-align: center;
+    width: 80px;
+    padding: 5px 0px;
+    font-weight: bold;
+    font-size: 12px;
+}
+/* slider */
+.slidecontainer{
+    display: none;
+    margin-right: 40px;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    color: #82A098;
+    width: 200px;
+    font-size: 12px;
+    font-weight: bold;
+}
+input[type="range"]{
+    -webkit-appearance: none;
+    background-color: #e3e3e4;
+    height: 3px;
+    width: 100%;
+}
+input[type="range"]:focus{
+    outline:none;
+}
+input[type="range"]::-webkit-slider-thumb{
+    -webkit-appearance: none;
+    width: 10px;
+    height: 10px;
+    background: #29907f;
+    border-radius: 50%;
+    cursor: pointer;
+    margin-top: -15px;
+}
+input[type="range"]:active::-webkit-slider-thumb{
+    width:13px;
+    height:13px;
+    margin-top: -15px;
+}
+datalist {
+    display: flex;
+    justify-content: space-between;
+    height: 15px;
+}
+
+datalist option {
+    min-height: 10px;
+    width: 5px;
+    margin: 0 0 10px 0;
+}
+/* slider結束 */
+
+.img_container{
+    display: flex;
+    align-items: center ;
+    position: relative;
+    background-color: #fff;
+    /* padding-top: 80px; */
+    padding-left: 6px;
+    padding-right: 6px;
+}  
+ul{
+    width: 10%;
+    max-width: 156px;
+    margin-right: 10px;
+    padding: 0;
+}
+li{
+    margin-left: 0;
+    list-style: none;
+    background-color: #FAFEE6;
+    height: 100%;
+    min-height: 44px;
+    padding: 8px 4px;
+    margin-bottom: 14px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 14px;
+}
+li div{
+    margin-top: 4px;
+}
+#levelConcern{
+    font-size: 18px;
+    color: #FEFFFE;
+}
+.chart{
+    position: relative;
+    width: 90%;
+}
+#loading{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: 70px;
+    z-index: 20;
+    color:#82A098;
+}
+
+#error{
+    display: none;
+    text-align: center;
+    color: red;
+    margin-top: 250px;
+}
