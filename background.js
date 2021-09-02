@@ -156,4 +156,3 @@ window.setInterval(function(){
         }
     }); 
 }, 500);
-

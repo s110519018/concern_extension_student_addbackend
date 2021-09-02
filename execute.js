@@ -46,8 +46,8 @@ alert_html.innerHTML=`
   <button id="hide" class="alert_btn">了解</button>
 </div>
 <audio id="alertAudio" controls loop>
-  <source src="https://soundbible.com/mp3/Tyrannosaurus%20Rex%20Roar-SoundBible.com-807702404.mp3" type="audio/ogg">
-  <source src="https://soundbible.com/mp3/Tyrannosaurus%20Rex%20Roar-SoundBible.com-807702404.mp3" type="audio/mpeg">
+  <source src="https://soundbible.com/mp3/School_Fire_Alarm-Cullen_Card-202875844.mp3" type="audio/ogg">
+  <source src="https://soundbible.com/mp3/School_Fire_Alarm-Cullen_Card-202875844.mp3" type="audio/mpeg">
 </audio>
 <div id="rollcall_div">
     <h2 id="rollcall_title"></h2>
@@ -243,7 +243,8 @@ insert_script.innerHTML =
           window.postMessage({status: 000});
           console.log("上課學生姓名: " +name_meet+"學號: "+studentID_meet+"google meet名稱: "+googlemeetname_meet);
           console.log("教室狀態: "+isClassing_meet+"教室ID: "+classroomDataID_meet+"順序: "+indexInList_meet);
-          getStudent_data_loop=setTimeout(getStudent_data,500);          
+          getStudent_data_loop=setTimeout(getStudent_data,500);  
+          document.getElementById("resttime_div").style.display = "none";
           socket_Rollcall();  
           break;
         case "end_class":
@@ -300,7 +301,7 @@ insert_script.innerHTML =
                 RollcallMiss();
               }
           }, 1000);
-        }
+        };
     
         ClickAttendBtn = () => {
           // console.log(rollcallIndex);
@@ -360,13 +361,13 @@ insert_script.innerHTML =
               
             }
           });
-        }
+        };
         RollcallMiss = () => {
           $("#rollcall_close_btn").show();
           $('#attend_btn').attr('disabled', 'disabled');
           $("#rollcall_content").text("錯過簽到");
           clearInterval(rollcall_interval);
-        }
+        };
       });
     }
 
@@ -444,7 +445,7 @@ insert_script.innerHTML =
           }
       }
       context.restore();
-      if (results.multiFaceLandmarks) {
+      if (results.multiFaceLandmarks.length > 0) {
           var righteye_ratio = CalcDotsDistance(results, 145, 159) / CalcDotsDistance(results, 33, 133);
           var lefteye_ratio = CalcDotsDistance(results, 374, 386) / CalcDotsDistance(results, 263, 362);
           var mouth_ratio = CalcDotsDistance(results, 13, 14) / CalcDotsDistance(results, 308, 78);
@@ -455,8 +456,7 @@ insert_script.innerHTML =
       else {
           // console.log("No Face");
           concernValue =0.0;
-          addborder();
-          
+          AddBorderandStatus();
       }
     }
 
@@ -528,7 +528,7 @@ insert_script.innerHTML =
     var weight_eyes = 0.7, weight_mouth = 0.3;
     function valueCalculator(value_eye, value_mouth) {
         concernValue = value_eye * weight_eyes + (2 - value_mouth) * weight_mouth;
-        addborder();
+        AddBorderandStatus();
     }
 
     function CalcDotsDistance(results, A, B) {
@@ -563,9 +563,9 @@ insert_script.innerHTML =
     var showTime_start=false;
     var alertShow=false;
     var alertAudio = document.getElementById("alertAudio");
-    function addborder(){
+    function AddBorderandStatus(){
       if(isClassing_meet&&!rest_time&&class_start){
-        $("#resttime_div").hide();
+        document.getElementById("resttime_div").style.display = "none";
         var color_str=concernValue;
         // console.log(color_str+video.getAttribute("data-uid"));
         if(color_str !="No Face"){
@@ -600,10 +600,10 @@ insert_script.innerHTML =
       else{
         video.parentElement.parentElement.style.border="8px solid transparent";
         if(rest_time){
-          $("#resttime_div").show();
+          document.getElementById("resttime_div").style.display = "block";
         }
         else{
-          $("#resttime_div").hide();
+          document.getElementById("resttime_div").style.display = "none";
         }
       }
     }
@@ -644,7 +644,7 @@ insert_script.innerHTML =
             }
           }
           concernValue=0;
-          addborder();
+          AddBorderandStatus();
         }
 
         $.ajax({
@@ -661,6 +661,7 @@ insert_script.innerHTML =
                 console.log(status);
                 rest_time=false;
                 class_start=true;
+                document.getElementById("resttime_div").style.display = "none";
                 window.postMessage({status: 201});
                 setTimeout_send=setTimeout(send,500);
               }
@@ -668,14 +669,17 @@ insert_script.innerHTML =
           error: function(XMLHttpRequest){
             if(isClassing_meet){
               console.log("error"+XMLHttpRequest.status+XMLHttpRequest.responseText);
+              video.parentElement.parentElement.style.border="8px solid transparent";
               if(XMLHttpRequest.status === 404){
                 isClassing_meet=false;
                 rest_time=false;
                 class_start=false;
                 alert("沒有這間教室喔!");
+                document.getElementById("resttime_div").style.display = "none";
               }
               else if(XMLHttpRequest.status === 401){
                 //下課
+                document.getElementById("resttime_div").style.display = "block";
                 rest_time=true;
                 class_start=true;
                 setTimeout_send=setTimeout(send,1000);
@@ -684,17 +688,20 @@ insert_script.innerHTML =
                 //課程尚未開始
                 rest_time=false;
                 class_start=false;
+                document.getElementById("resttime_div").style.display = "none";
                 setTimeout_send=setTimeout(send,1000);
               }
               else if(XMLHttpRequest.status === 403){
                 //無此學生，why?
                 console.log("無此學生");
                 setTimeout_send=setTimeout(send,1000);
+                document.getElementById("resttime_div").style.display = "none";
               }
               else{
                 rest_time=false;
                 class_start=false;
                 setTimeout_send=setTimeout(send,5000);
+                document.getElementById("resttime_div").style.display = "none";
               }
               window.postMessage({status: XMLHttpRequest.status});
             }
